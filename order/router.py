@@ -60,7 +60,7 @@ def get_amount(items: list):
         if product["quantity"] < item["quantity"]:
             return -2
 
-        products_map[str(product["_id"])] = product["quantity"]
+        products_map[str(product["_id"])] = item["quantity"]
         amount += product["price"] * item["quantity"]
 
     # Update quantity of products in stock only if order is placed successfully
