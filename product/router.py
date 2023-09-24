@@ -34,7 +34,7 @@ async def create_product(product: CreateProduct) -> Product:
 
 
 @router.put("/{id}", status_code=status.HTTP_200_OK)
-async def update_product(id: str, product: Product) -> Product:
+async def update_product(id: str, product: CreateProduct) -> Product:
     if not ObjectId.is_valid(id):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=f"Invalid id: {id}")
     updated_product = Products.update_one({"_id": ObjectId(id)}, {"$set": dict(product)})
